@@ -4,11 +4,11 @@ import { fixedMonthlyMortage, payPrinicipal } from "../../../utils/mortage";
 
 export default (req: NextApiRequest, res: NextApiResponse) => {
     if (req.method === "POST") {
-      let { prinicipal = 0, interestRate = 0, totalPayments = 0 } = req.body;
-      
-      prinicipal = Number(prinicipal);
-      interestRate = Number(interestRate);
-      totalPayments = Number(totalPayments);
+      let { prinicipal, interestRate, totalPayments } = JSON.parse(req.body);
+
+      prinicipal = parseFloat(prinicipal);
+      interestRate = parseFloat(interestRate);
+      totalPayments = parseFloat(totalPayments);
 
       const monthlyPayment = fixedMonthlyMortage(prinicipal, interestRate, totalPayments);
       prinicipal = payPrinicipal(monthlyPayment, prinicipal, interestRate, totalPayments);

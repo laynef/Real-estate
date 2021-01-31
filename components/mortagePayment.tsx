@@ -6,7 +6,7 @@ const MonthlyMortagePayments = () => {
     const [prinicipal, setPrinicipal] = React.useState('');
     const [interestRate, setInterestRate] = React.useState('');
     const [totalPayments, setTotalPayments] = React.useState('');
-    const [response, setResponse] = React.useState(0);
+    const [response, setResponse]: any = React.useState(null);
 
     const fetchApi = async () => {
         const resp = await fetch('/api/v1/mortage', {
@@ -16,8 +16,9 @@ const MonthlyMortagePayments = () => {
                 interestRate,
                 totalPayments,
             })
-        }).then(r => r.json());
-        setResponse(resp);
+        });
+        const data = await resp.json();
+        setResponse(data);
     }
 
     return (
@@ -31,7 +32,11 @@ const MonthlyMortagePayments = () => {
                 </button>
             </div>
             <div className={styles.section}>
-
+                {response && (
+                    <div>
+                        Monthly Mortage Payment: ${response?.monthlyPayment?.toFixed(2)}
+                    </div>
+                )}
             </div>
         </div>
     );
