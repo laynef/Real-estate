@@ -1,10 +1,10 @@
-export const fixedMonthlyMortage = (pricinipal: number, interestRate: number, totalPayments: number): number =>
-    pricinipal * interestRate * (Math.pow(1 + interestRate, totalPayments) / (Math.pow(1 + interestRate, totalPayments) - 1));
+export const fixedMonthlyMortage = (pricinipal: number, interestRate: number, totalYears: number): number =>
+    pricinipal * (interestRate / 12) * (Math.pow(1 + (interestRate / 12), (totalYears * 12)) / (Math.pow(1 + (interestRate / 12), (totalYears * 12)) - 1));
 
 export const payPrinicipal = (your_payment: number, pricinipal: number, interestRate: number, totalPayments: number): number => {
     const payment = fixedMonthlyMortage(pricinipal, interestRate, totalPayments);
     if (your_payment > payment) {
-        pricinipal = your_payment - payment;
+        pricinipal -= (your_payment - payment);
         return pricinipal;
     } else {
         // TODO: Calculate prinicipal on lower payment
