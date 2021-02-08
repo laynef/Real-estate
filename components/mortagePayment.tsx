@@ -24,10 +24,19 @@ const MonthlyMortagePayments = () => {
     return (
         <div className={styles.container}>
             <div className={styles.section}>
-                <input onChange={e => setPrinicipal(e?.target?.value)} name="prinicipal" step="1" type="number" />
-                <input onChange={e => setInterestRate(e?.target?.value)} name="interestRate" step="0.01" type="number" />
-                <input onChange={e => setTotalPayments(e?.target?.value)} name="totalPayments" step="1" type="number" />
-                <button onClick={fetchApi}>
+                <div className="form-group w-100">
+                    <label htmlFor="prinicipal">Prinicipal</label>
+                    <input className="form-control" onChange={e => setPrinicipal(e?.target?.value)} placeholder="Enter prinicipal" name="prinicipal" step="1" type="number" />
+                </div>
+                <div className="form-group w-100">
+                    <label htmlFor="interestRate">Interest Rate</label>
+                    <input className="form-control" onChange={e => setInterestRate(e?.target?.value)} placeholder="Enter Interest Rate" name="interestRate" step="0.01" type="number" />
+                </div>
+                <div className="form-group w-100">
+                    <label htmlFor="totalPayments">Total Payment Months</label>
+                    <input className="form-control" onChange={e => setTotalPayments(e?.target?.value)} placeholder="Enter total months of payment" name="totalPayments" step="1" type="number" />
+                </div>
+                <button className="btn-block btn btn-primary" onClick={fetchApi}>
                     Submit
                 </button>
             </div>
