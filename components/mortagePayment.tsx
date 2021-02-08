@@ -23,7 +23,8 @@ const MonthlyMortagePayments = () => {
 
     return (
         <div className={styles.container}>
-            <div className={styles.section}>
+            <div className="card w-50 shadow-sm p-3">
+                <h2 className="font-weight-light">Monthly Payment Calculator</h2>
                 <div className="form-group w-100">
                     <label htmlFor="prinicipal">Prinicipal</label>
                     <input className="form-control" onChange={e => setPrinicipal(e?.target?.value)} placeholder="Enter prinicipal" name="prinicipal" step="1" type="number" />

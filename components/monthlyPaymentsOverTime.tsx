@@ -25,7 +25,8 @@ const MonthlyMortagePayments = () => {
 
     return (
         <div className={styles.container}>
-            <div className={styles.section}>
+            <div className="card w-50 shadow-sm p-3">
+                <h2 className="font-weight-light">Payoff your Loan Faster</h2>
                 <div className="form-group w-100">
                     <label htmlFor="yourPayment">Your Payment</label>
                     <input className="form-control" onChange={e => setYourPayment(e?.target?.value)} placeholder="Enter your payment" name="yourPayment" step="1" type="number" />
